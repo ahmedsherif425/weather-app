@@ -25,7 +25,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '..'))); 
 
 // MongoDB Connection (as before)
-mongoose.connect('mongodb+srv://ahmedsherif:ahmedsherif102911@cluster0.tzdjacy.mongodb.net/?appName=Cluster0', {
+mongoose.connect('mongodb+srv://ai4221097:ZJ1p7hTsgbpxfXYb@weather-app.ydcf0xv.mongodb.net/?retryWrites=true&w=majority&appName=weather-app', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
