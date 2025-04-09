@@ -41,4 +41,4 @@ This app uses the WeatherAPI.com service to fetch weather data.
 
 ## Screenshots
 
-(Add screenshots here) 
+(Add screenshots here) # weather-app
