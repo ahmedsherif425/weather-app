@@ -194,15 +194,12 @@
                 </a></div>
 
             <div class="navbar-links">
-                <ul class=" d-flex justify-content-between gap-5 list-unstyled">
-                    <a href="#">
-                        <li class="active-link rounded-pill">Home</li>
+                <ul class="d-flex justify-content-between gap-5 list-unstyled">
+                    <a href="#" id="userGreeting">
+                        <li class="nav-button rounded-pill">Welcome</li>
                     </a>
-                    <a href="#" id="openLoginModal">
-                        <li class="active-link rounded-pill">Login</li>
-                    </a>
-                    <a href="#" id="openSignupModal">
-                        <li class="active-link rounded-pill">Sign Up</li>
+                    <a href="/logout" id="logoutBtn">
+                        <li class="nav-button rounded-pill">Logout</li>
                     </a>
                 </ul>
             </div>
@@ -251,6 +248,24 @@
     </footer>
 
     <script>
+        // Add this at the beginning of your JavaScript, after body is loaded
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('/api/auth/status');
+                const data = await response.json();
+                
+                if (data.authenticated) {
+                    // Update the greeting with the username
+                    document.getElementById('userGreeting').innerHTML = `<li class="nav-button rounded-pill">Welcome, ${data.username}</li>`;
+                } else {
+                    // Redirect to login if not authenticated (this should be handled by server but as a backup)
+                    window.location.href = '/login.html';
+                }
+            } catch (error) {
+                console.error('Error checking auth status:', error);
+            }
+        });
+        
         // Get the modal elements
         const loginModal = document.getElementById("loginModal");
         const signupModal = document.getElementById("signupModal");
